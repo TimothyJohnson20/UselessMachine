@@ -32,17 +32,21 @@ public class MainActivity extends AppCompatActivity {
         SELF_DESTRUCT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CountDownTimer(5000, 1000) {
+                new CountDownTimer(10000, 1000) {
+                    int timeLeft = 11;
                     @Override
                     public void onTick(long l) {
-                        Toast.makeText(MainActivity.this, "...", Toast.LENGTH_SHORT).show();
+
+                        timeLeft--;
+                        String remainingTime = " " + timeLeft;
+                        Toast.makeText(MainActivity.this, remainingTime, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFinish() {
-                        System.exit(0);
+                        finish();
                     }
-                }
+                }.start();
 
             }
         });
